@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bookshelf App</title>
+    <link rel="stylesheet" href="src/style/style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <h1>Bookshelf App</h1>
+    </header>
+    <div id="loadingIndicator" style="display: none">Loading...</div>
+
+    <main class="main-container">
+      <div class="form-container">
+        <section class="add-book-section">
+          <h2>Tambah Buku Baru</h2>
+          <form id="bookForm" class="book-form" data-testid="bookForm">
+            <div class="form-group">
+              <label for="bookFormTitle">Judul</label>
+              <input
+                id="bookFormTitle"
+                type="text"
+                required
+                data-testid="bookFormTitleInput"
+              />
+            </div>
+            <div class="form-group">
+              <label for="bookFormAuthor">Penulis</label>
+              <input
+                id="bookFormAuthor"
+                type="text"
+                required
+                data-testid="bookFormAuthorInput"
+              />
+            </div>
+            <div class="form-group">
+              <label for="bookFormYear">Tahun</label>
+              <input
+                id="bookFormYear"
+                type="number"
+                required
+                data-testid="bookFormYearInput"
+              />
+            </div>
+            <div class="form-group checkbox-group">
+              <input
+                id="bookFormIsComplete"
+                class="btn btn-check"
+                type="checkbox"
+                data-testid="bookFormIsCompleteCheckbox"
+              />
+              <label for="bookFormIsComplete">Selesai dibaca</label>
+            </div>
+            <button
+              id="bookFormSubmit"
+              type="submit"
+              class="btn btn-submit"
+              data-testid="bookFormSubmitButton"
+            >
+              Masukkan Buku ke rak <span>Belum selesai dibaca</span>
+            </button>
+          </form>
+        </section>
+
+        <section class="search-book-section">
+          <h2>Cari Buku</h2>
+          <form
+            id="searchBook"
+            class="search-form"
+            data-testid="searchBookForm"
+          >
+            <label for="searchBookTitle"></label>
+            <input
+              id="searchBookTitle"
+              type="text"
+              data-testid="searchBookFormTitleInput"
+            />
+            <button
+              id="searchSubmit"
+              type="submit"
+              class="btn btn-search"
+              data-testid="searchBookFormSubmitButton"
+            >
+              Cari
+            </button>
+          </form>
+        </section>
+      </div>
+
+      <section class="bookshelf-container">
+        <section class="book-section">
+          <h2>Belum selesai dibaca</h2>
+          <div
+            id="incompleteBookList"
+            class="book-list"
+            data-testid="incompleteBookList"
+          >
+            <div
+              class="book-item"
+              data-bookid="123123123"
+              data-testid="bookItem"
+            >
+              <h3 data-testid="bookItemTitle">Judul Buku 1</h3>
+              <p data-testid="bookItemAuthor">Penulis: Penulis Buku 1</p>
+              <p data-testid="bookItemYear">Tahun: 2030</p>
+              <div class="book-actions">
+                <button
+                  class="btn btn-complete"
+                  data-testid="bookItemIsCompleteButton"
+                >
+                  Selesai dibaca
+                </button>
+                <button
+                  class="btn btn-delete"
+                  data-testid="bookItemDeleteButton"
+                >
+                  Hapus Buku
+                </button>
+                <button class="btn btn-edit" data-testid="bookItemEditButton">
+                  Edit Buku
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="book-section">
+          <h2>Selesai dibaca</h2>
+          <div
+            id="completeBookList"
+            class="book-list"
+            data-testid="completeBookList"
+          >
+            <div
+              class="book-item"
+              data-bookid="456456456"
+              data-testid="bookItem"
+            >
+              <h3 data-testid="bookItemTitle">Judul Buku 2</h3>
+              <p data-testid="bookItemAuthor">Penulis: Penulis Buku 2</p>
+              <p data-testid="bookItemYear">Tahun: 2030</p>
+              <div class="book-actions">
+                <button
+                  class="btn btn-complete"
+                  data-testid="bookItemIsCompleteButton"
+                >
+                  Belum selesai dibaca
+                </button>
+                <button
+                  class="btn btn-delete"
+                  data-testid="bookItemDeleteButton"
+                >
+                  Hapus Buku
+                </button>
+                <button class="btn btn-edit" data-testid="bookItemEditButton">
+                  Edit Buku
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>
