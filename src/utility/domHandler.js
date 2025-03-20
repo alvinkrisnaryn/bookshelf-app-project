@@ -3,16 +3,16 @@ function createBookElement(book, onDelete) {
   bookElement.dataset.bookid = book.id;
   bookElement.dataset.testid = "bookItem";
 
-  // Ambil informasi author dan year dari body (format "Author: Nama, Year: 2024")
-  const bodyParts = book.body.split(", ");
-  const author = bodyParts.find((part) => part.startsWith("Author:"))
-    ? bodyParts
-        .find((part) => part.startsWith("Author:"))
-        .replace("Author: ", "")
-    : "Unknown";
-  const year = bodyParts.find((part) => part.startsWith("Year:"))
-    ? bodyParts.find((part) => part.startsWith("Year:")).replace("Year: ", "")
-    : "Unknown";
+  // Pastikan book.body adalah string sebelum melakukan split
+  const bodyText = typeof book.body === "string" ? book.body : "";
+  const bodyParts = bodyText.split(", ");
+
+  // Ambil informasi author dan year dengan pengecekan aman
+  const authorPart = bodyParts.find((part) => part.startsWith("Author:"));
+  const yearPart = bodyParts.find((part) => part.startsWith("Year:"));
+
+  const author = authorPart ? authorPart.replace("Author: ", "") : "Unknown";
+  const year = yearPart ? yearPart.replace("Year: ", "") : "Unknown";
 
   bookElement.innerHTML = `
     <h3 data-testid="bookItemTitle">${book.title}</h3>
@@ -22,9 +22,13 @@ function createBookElement(book, onDelete) {
     <button class="btn btn-delete" data-testid="bookItemDeleteButton">Hapus Buku</button>
   `;
 
-  bookElement
-    .querySelector("[data-testid='bookItemDeleteButton']")
-    .addEventListener("click", () => onDelete(book.id));
+  bookElement.querySelector(".btn-delete").addEventListener("click", () => {
+    if (typeof onDelete === "function") {
+      onDelete(book.id);
+    }
+  });
 
   return bookElement;
 }
+
+export { createBookElement };

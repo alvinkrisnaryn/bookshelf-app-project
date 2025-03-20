@@ -2,7 +2,7 @@
   "name": "bookshelf-app",
   "version": "1.0.0",
   "description": "Bookshelf App with Webpack",
-  "main": "./src/main.js",
+  "main": "./main.js",
   "scripts": {
     "start-dev": "webpack serve --mode development",
     "build": "webpack --mode production"
